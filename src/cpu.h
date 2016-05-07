@@ -83,7 +83,7 @@ class cpu
 public:
   cpu();
   ~cpu();
-  void init(Cartridge *mapper, ppu *ppu);
+  void init(boost::shared_ptr<Cartridge> mapper, boost::shared_ptr<ppu> ppu);
   bool isInitialized() { return _isInitialized; }
   void start();
   void stop();
@@ -96,7 +96,8 @@ public:
   void updateControllerKeyStatus(SDL_Event event);
 
 private:
-  Cartridge *_mapper;
+  boost::shared_ptr<Cartridge> _mapper;
+  boost::shared_ptr<ppu> _ppu;
 
   bool is_running;
   bool isAborted;
@@ -107,9 +108,7 @@ private:
   std::vector<keyEntry> keyTable;
   std::vector<keyEntry>::iterator keyIterator;
   std::list<Interrupt> interrupts;
-
-
-  ppu *_ppu;
+  
   bool _isInitialized;
   enum ControllerStatus controllerStatus;
   unsigned char controllerLastWrite;

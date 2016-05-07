@@ -6,7 +6,7 @@
 class Mapper0 : public Cartridge
 {
 public:
-  Mapper0(iNes *rom);
+  Mapper0(boost::shared_ptr<iNes> rom);
   ~Mapper0() {}
   virtual void reset();
   enum Mirroring getMirroring();

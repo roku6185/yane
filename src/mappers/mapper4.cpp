@@ -4,7 +4,13 @@
 
 using namespace std;
 
-Mapper4::Mapper4(iNes *rom, cpu *cpu) : Cartridge(rom), _cpu(cpu) {}
+Mapper4::Mapper4(
+  boost::shared_ptr<iNes> rom,
+  boost::shared_ptr<cpu> cpu)
+:
+  Cartridge(rom),
+  _cpu(cpu)
+{}
 
 void Mapper4::reset()
 {

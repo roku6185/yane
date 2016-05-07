@@ -13,7 +13,7 @@
 class Mapper1 : public Cartridge
 {
 public:
-  Mapper1(iNes *rom);
+  Mapper1(boost::shared_ptr<iNes> rom);
   ~Mapper1() {}
   void reset();
   bool writePrgRom(unsigned short address, unsigned char value);

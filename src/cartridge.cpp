@@ -6,7 +6,9 @@
 
 using namespace std;
 
-Cartridge::Cartridge(iNes *rom) : _rom(rom)
+Cartridge::Cartridge(boost::shared_ptr<iNes> rom)
+:
+  _rom(rom)
 {
   bzero(prgMap, sizeof(prgMap));
   bzero(chrMap, sizeof(chrMap));

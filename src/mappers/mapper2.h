@@ -6,7 +6,7 @@
 class Mapper2 : public Mapper0
 {
 public:
-  Mapper2(iNes *rom);
+  Mapper2(boost::shared_ptr<iNes> rom);
   ~Mapper2() {}
   virtual void reset();
   std::string getName() { return "UNROM"; };

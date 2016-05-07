@@ -156,8 +156,8 @@ void cpu::dequeueInterrupt()
 
 cpu::cpu()
 {
-  _mapper = NULL;
-  _ppu = NULL;
+  _mapper = nullptr;
+  _ppu = nullptr;
   _isInitialized = false;
   controllerStatus = ControllerStatus::FirstWrite;
   controllerReadCount[0] = 0;
@@ -170,7 +170,7 @@ cpu::cpu()
   {
     {"A",      SDLK_a,      false},
     {"B",      SDLK_b,      false},
-    {"Select", SDLK_RSHIFT, false},
+    {"Select", SDLK_LSHIFT, false},
     {"Start",  SDLK_RETURN, false},
     {"Up",     SDLK_UP,     false},
     {"Down",   SDLK_DOWN,   false},
@@ -484,7 +484,9 @@ cpu::~cpu()
   delete[] memory;
 }
 
-void cpu::init(Cartridge *mapper, ppu *ppu)
+void cpu::init(
+  boost::shared_ptr<Cartridge> mapper,
+  boost::shared_ptr<ppu> ppu)
 {
   _mapper = mapper;
   _ppu = ppu;

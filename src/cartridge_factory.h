@@ -3,13 +3,16 @@
 
 #include "ines.h"
 #include "cartridge.h"
+#include <boost/shared_ptr.hpp>
 
 class cpu;
 
 class CartridgeFactory
 {
 public:
-  static Cartridge* create(iNes *rom, cpu *cpu);
+  static boost::shared_ptr<Cartridge> create(
+    boost::shared_ptr<iNes> rom,
+    boost::shared_ptr<cpu> cpu);
 
 private:
   CartridgeFactory();

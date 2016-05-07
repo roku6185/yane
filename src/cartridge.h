@@ -1,6 +1,7 @@
 #ifndef _CARTRIDGE_H_
 #define _CARTRIDGE_H_
 
+#include <boost/shared_ptr.hpp>
 #include <strings.h>
 #include "ines.h"
 
@@ -11,7 +12,7 @@ enum Mirroring { Horizontal, Vertical, SingleScreen, SingleScreenLowerBank, Sing
 class Cartridge
 {
 public:
-  Cartridge(iNes *rom);
+  Cartridge(boost::shared_ptr<iNes> rom);
   virtual ~Cartridge() {};
   virtual bool readPrgRom(unsigned short address, unsigned char &value);
   virtual bool writePrgRom(unsigned short address, unsigned char value);
@@ -24,7 +25,7 @@ public:
   const string toString();
 
 protected:
-  iNes *_rom;
+  boost::shared_ptr<iNes> _rom;
   void mapPrg32Kb(unsigned char targetBankIndex);
   void mapPrg16Kb(unsigned short address, unsigned char targetBankIndex);
   void mapPrg8Kb(unsigned short address, unsigned char targetBankIndex);

@@ -8,7 +8,7 @@
 class Mapper7 : public Cartridge
 {
 public:
-  Mapper7(iNes *rom);
+  Mapper7(boost::shared_ptr<iNes> rom);
   void reset();
   std::string getName() { return "AOROM"; };
   bool writePrgRom(unsigned short address, unsigned char value);

@@ -2,6 +2,7 @@
 #define _PPU_H_
 
 #include <vector>
+#include <boost/shared_ptr.hpp>
 #include "ines.h"
 
 class cpu;
@@ -89,7 +90,10 @@ class ppu
 public:
   ppu();
   ~ppu();
-  void init(Cartridge *mapper, Renderer *renderer, cpu *cpu);
+  void init(
+    boost::shared_ptr<Cartridge> mapper,
+    boost::shared_ptr<Renderer> renderer,
+    boost::shared_ptr<cpu> cpu);
   bool isInitialized() { return _isInitialized; }
   void start();
   void stop();
@@ -112,9 +116,9 @@ public:
   void writeDMA(unsigned char value);
 
 private:
-  Cartridge *_mapper;
-  Renderer *_renderer;
-  cpu *_cpu;
+  boost::shared_ptr<Cartridge> _mapper;
+  boost::shared_ptr<Renderer> _renderer;
+  boost::shared_ptr<cpu> _cpu;
   bool _isInitialized;
 
   unsigned char *video_memory;

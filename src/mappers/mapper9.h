@@ -10,7 +10,7 @@
 class Mapper9 : public Cartridge
 {
 public:
-  Mapper9(iNes *rom);
+  Mapper9(boost::shared_ptr<iNes> rom);
   void reset();
   std::string getName() { return "MMC2"; };
   bool writePrgRom(unsigned short address, unsigned char value);

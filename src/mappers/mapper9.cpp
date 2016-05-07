@@ -3,7 +3,10 @@
 
 using namespace std;
 
-Mapper9::Mapper9(iNes *rom) : Cartridge(rom) {}
+Mapper9::Mapper9(boost::shared_ptr<iNes> rom)
+:
+  Cartridge(rom)
+{}
 
 void Mapper9::reset()
 {

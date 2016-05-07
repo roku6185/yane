@@ -15,7 +15,7 @@ class cpu;
 class Mapper4 : public Cartridge
 {
 public:
-  Mapper4(iNes *rom, cpu *cpu);
+  Mapper4(boost::shared_ptr<iNes> rom, boost::shared_ptr<cpu> cpu);
   void reset();
   std::string getName() { return "MMC3"; };
   bool writePrgRom(unsigned short address, unsigned char value);
@@ -23,7 +23,7 @@ public:
   void irqTick();
 
 private:
-  cpu *_cpu;
+  boost::shared_ptr<cpu> _cpu;
 
   void setupChr();
   void setupPrg();

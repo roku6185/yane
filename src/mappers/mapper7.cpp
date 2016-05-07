@@ -2,7 +2,10 @@
 
 using namespace std;
 
-Mapper7::Mapper7(iNes *rom) : Cartridge(rom) {}
+Mapper7::Mapper7(boost::shared_ptr<iNes> rom)
+:
+  Cartridge(rom)
+{}
 
 void Mapper7::reset()
 {

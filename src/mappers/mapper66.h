@@ -6,7 +6,7 @@
 class Mapper66 : public Mapper0
 {
 public:
-  Mapper66(iNes *rom);
+  Mapper66(boost::shared_ptr<iNes> rom);
   void reset();
   std::string getName() { return "GNROM"; };
   bool writePrgRom(unsigned short address, unsigned char value);

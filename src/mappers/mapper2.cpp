@@ -2,7 +2,10 @@
 
 using namespace std;
 
-Mapper2::Mapper2(iNes *rom) : Mapper0(rom) {}
+Mapper2::Mapper2(boost::shared_ptr<iNes> rom)
+:
+  Mapper0(rom)
+{}
 
 void Mapper2::reset()
 {

@@ -2,6 +2,7 @@
 #define _YANE_H_
 
 #include <string>
+#include <boost/make_shared.hpp>
 #include <boost/assert.hpp>
 #include <SDL/SDL.h>
 
@@ -25,12 +26,12 @@ public:
   void handleUserInput(SDL_Event event);
 
 private:
-  Cartridge *_mapper;
-  Renderer *_renderer;
-  iNes *_rom;
-  cpu *_cpu;
-  ppu *_ppu;
-  Controller *_controller;
+  boost::shared_ptr<Cartridge> _mapper;
+  boost::shared_ptr<Renderer> _renderer;
+  boost::shared_ptr<iNes> _rom;
+  boost::shared_ptr<cpu> _cpu;
+  boost::shared_ptr<ppu> _ppu;
+  boost::shared_ptr<Controller> _controller;
   bool isRunning;
   bool isReset;
 };

@@ -1,15 +1,16 @@
 #include "renderer_factory.h"
 #include "yane_exception.h"
 #include "renderers/sdlrenderer.h"
+#include <boost/make_shared.hpp>
 
-Renderer* RendererFactory::create(const std::string &name)
+boost::shared_ptr<Renderer> RendererFactory::create(const std::string &name)
 {
   enum RendererType type = lookupType(name);
 
   switch (type)
   {
     case RendererType::SDL:
-      return  new SDLRenderer();
+      return boost::make_shared<SDLRenderer>();
       break;
 
     default:

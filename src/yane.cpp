@@ -15,25 +15,23 @@
 #include "utils.h"
 
 
-Yane::Yane() : isRunning(false), isReset(false)
+Yane::Yane()
+:
+  isRunning(false),
+  isReset(false)
 {
-  _cpu = new cpu();
-  _ppu = new ppu();
-  _controller = new Controller(this);
+  _cpu = boost::make_shared<cpu>();
+  _ppu = boost::make_shared<ppu>();
+  _controller = boost::make_shared<Controller>(this);
 }
 
 Yane::~Yane()
-{
-  delete _cpu;
-  delete _ppu;
-  delete _rom;
-  delete _controller;
-}
+{}
 
 void Yane::init(std::string filename)
 {
   // Initialize rom
-  _rom = new iNes(filename);
+  _rom = boost::make_shared<iNes>(filename);
   _rom->init();
 
   if (!_rom->isValid())

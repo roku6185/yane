@@ -14,8 +14,8 @@ using namespace std;
 
 ppu::ppu()
 {
-  _mapper = NULL;
-  _cpu = NULL;
+  _mapper = nullptr;
+  _cpu = nullptr;
   _isInitialized = false;
 
   isVblank = false;
@@ -84,7 +84,10 @@ ppu::~ppu()
   delete[] sprite_memory;
 }
 
-void ppu::init(Cartridge *mapper, Renderer *renderer, cpu *cpu)
+void ppu::init(
+  boost::shared_ptr<Cartridge> mapper,
+  boost::shared_ptr<Renderer> renderer,
+  boost::shared_ptr<cpu> cpu)
 {
   _mapper = mapper;
   _renderer = renderer;

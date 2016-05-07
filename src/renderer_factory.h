@@ -3,13 +3,14 @@
 
 #include "renderer.h"
 #include <map>
+#include <boost/shared_ptr.hpp>
 
 enum RendererType { SDL, Unknown };
 
 class RendererFactory
 {
 public:
-  static Renderer* create(const std::string &name);
+  static boost::shared_ptr<Renderer> create(const std::string &name);
 
 private:
   RendererFactory();
